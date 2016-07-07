@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Personal Site V2</title>
+	<link href='https://fonts.googleapis.com/css?family=Lato:400,100,300' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<nav class="menu menu--viola">
+		<ul id="header" class="menu__list">
+			<li class="menu-item menu-item--current"><a href="#" class="menu-link">About</a></li>
+			<li class="menu-item"><a href="#" class="menu-link">Portfolio</a></li>
+			<li class="menu-item"><a href="#" class="menu-link">Experience</a></li>
+			<li class="menu-item"><a href="#" class="menu-link">Contact</a></li>
+		</ul>
+	</nav>
+	<h1 id="welcome">Blakelock Brown</h1>
+	<script src="clipboard.js"></script>
+	<script src="classie.js"></script>
+	<script>
+	(function() {
+		[].slice.call(document.querySelectorAll('.menu')).forEach(function(menu) {
+			var menuItems = menu.querySelectorAll('.menu-link'),
+				setCurrent = function(ev) {
+					ev.preventDefault();
+
+					var item = ev.target.parentNode; // li
+
+					// return if already current
+					if (classie.has(item, 'menu-item--current')) {
+						return false;
+					}
+					// remove current
+					classie.remove(menu.querySelector('.menu-item--current'), 'menu-item--current');
+					// set current
+					classie.add(item, 'menu-item--current');
+				};
+
+			[].slice.call(menuItems).forEach(function(el) {
+				el.addEventListener('click', setCurrent);
+			});
+		});
+
+		[].slice.call(document.querySelectorAll('.link-copy')).forEach(function(link) {
+			link.setAttribute('data-clipboard-text', location.protocol + '//' + location.host + location.pathname + '#' + link.parentNode.id);
+			new Clipboard(link);
+			link.addEventListener('click', function() {
+				classie.add(link, 'link-copy--animate');
+				setTimeout(function() {
+					classie.remove(link, 'link-copy--animate');
+				}, 300);
+			});
+		});
+	})(window);
+	</script>
+</body>
+</html>
