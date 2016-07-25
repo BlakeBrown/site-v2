@@ -1,0 +1,30 @@
+body {
+	height: 100vh;
+	width: 100vw;
+	background-color: #fff;
+	margin: 0;
+}
+
+#header {
+	list-style-type: none;
+	margin: 0;
+	padding: 15px 0 0 0;
+	font-family: 'Lato';
+	font-weight: 100;
+	font-size: 14px;
+	text-align: center;
+	color: white;
+}
+
+#header > li {
+	display: inline-block;
+	text-decoration: none;
+	text-align: center;
+}
+
+#welcome {
+	font-color: #eee;
+	text-align: center;
+	color: white;
+	font-family: 'lato';
+}
